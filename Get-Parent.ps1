@@ -8,17 +8,17 @@ Set-StrictMode -Version Latest
 
 .GUID 1e0480c8-acc6-43b3-8035-a4c3a9dbd329
 
-.AUTHOR davidwalker
+.AUTHOR David Walker
 
-.COMPANYNAME
+.COMPANYNAME Radical Dave
 
-.COPYRIGHT
+.COPYRIGHT David Walker
 
-.TAGS
+.TAGS powershell io parent
 
-.LICENSEURI
+.LICENSEURI https://github.com/Radical-Dave/Get-Parent/blob/main/LICENSE
 
-.PROJECTURI
+.PROJECTURI https://github.com/Radical-Dave/Get-Parent
 
 .ICONURI
 
@@ -48,11 +48,12 @@ Set-StrictMode -Version Latest
 .EXAMPLE
     PS C:\> Get-Parent 3
 .INPUTS
-    System.String. You can pipe in the Value parameter.
+    System.String. You can pipe in the level parameter.
 .OUTPUTS
-    None.
-#> 
-param([parameter(position=0)] [int]$level = 2)
-$path = ("\.." * $level)
-Write-Verbose "path:$path"
-return System.IO.Path]::GetFullPath($path)
+    System.String. The path of Parent folder at Level # up.
+#>
+Param([parameter(position=0)] [int]$level = 1)
+Write-Output "pwd:$pwd"
+$path = Join-Path $pwd ("\.." * $level)
+Write-Output "path:$path"
+return [System.IO.Path]::GetFullPath($path)
