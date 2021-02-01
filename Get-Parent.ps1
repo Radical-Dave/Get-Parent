@@ -4,9 +4,9 @@ Set-StrictMode -Version Latest
 #####################################################
 <#
 .SYNOPSIS
-    Gets parent of current working directory
+    Gets parent of current working directory or # level up
 .DESCRIPTION
-    Gets parent of current working directory and optional int level numbers of parents
+    Gets parent of current working directory or optional int level numbers of parents
 .PARAMETER level
     Specifies the path that should be reset to return to original working directory.
 .EXAMPLE
