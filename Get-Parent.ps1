@@ -2,6 +2,38 @@ Set-StrictMode -Version Latest
 #####################################################
 #  Get-Parent
 #####################################################
+<#PSScriptInfo
+
+.VERSION 1.0
+
+.GUID 1e0480c8-acc6-43b3-8035-a4c3a9dbd329
+
+.AUTHOR davidwalker
+
+.COMPANYNAME
+
+.COPYRIGHT
+
+.TAGS
+
+.LICENSEURI
+
+.PROJECTURI
+
+.ICONURI
+
+.EXTERNALMODULEDEPENDENCIES 
+
+.REQUIREDSCRIPTS
+98
+.EXTERNALSCRIPTDEPENDENCIES
+
+.RELEASENOTES
+
+
+.PRIVATEDATA
+
+#>
 <#
 .SYNOPSIS
     Gets parent of current working directory or # level up
@@ -19,9 +51,8 @@ Set-StrictMode -Version Latest
     System.String. You can pipe in the Value parameter.
 .OUTPUTS
     None.
-#>
-function Get-Parent
-{
-    Param([Parameter(Position=0)] [int]$level = 1)
-	return System.IO.Path]::GetFullPath(($pwd + "\.." * $level))
-}
+#> 
+param([parameter(position=0)] [int]$level = 2)
+$path = ("\.." * $level)
+Write-Verbose "path:$path"
+return System.IO.Path]::GetFullPath($path)
